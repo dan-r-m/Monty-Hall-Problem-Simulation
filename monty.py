@@ -99,11 +99,10 @@ show_work = False
 
 if show_work:
     for i in range(0, 3):
-        if demo():
-            correct = correct+1
-        if demoNoSwitch():
-            correctNoSwitch = correctNoSwitch+1
+        demo()
+        demoNoSwitch()
         print("\n")
+
 
 if not show_work:
     for i in range(0, NUMATTEMPTS):
@@ -111,7 +110,6 @@ if not show_work:
                 correct = correct+1
             if roundNoSwitch():
                 correctNoSwitch = correctNoSwitch+1
-
     print("Here's how we did:...")
     print("With switch: ", correct, "that's ", correct/NUMATTEMPTS, "%")
     print("Without switch: ", correctNoSwitch, "that's ", correctNoSwitch/NUMATTEMPTS, "%")
