@@ -33,6 +33,9 @@ def monty(doors, guess):
         elif doors[door] == False:
             return door
 
+#recieves the doors, the contestant's original
+#guess, and the door Monty revealed
+#returns the index of the remaining door
 def doorSwitch(doors, guess, montysDoor):
     for door in range(0, doors.size):
         if door == guess or door == montysDoor:
@@ -103,27 +106,24 @@ def roundNoSwitch():
     else:
         return False
 
+if __name__ == '__main__':
+    correct = 0
+    correctNoSwitch = 0
+    demo_mode = False
+
+    if demo_mode:
+        for i in range(0, 3):
+            demo()
+            demoNoSwitch()
+            print("\n")
 
 
-
-
-correct = 0
-correctNoSwitch = 0
-demo_mode = False
-
-if demo_mode:
-    for i in range(0, 3):
-        demo()
-        demoNoSwitch()
-        print("\n")
-
-
-if not demo_mode:
-    for i in range(0, NUMATTEMPTS):
-            if roundWithSwitch():
-                correct = correct+1
-            if roundNoSwitch():
-                correctNoSwitch = correctNoSwitch+1
-    print("Here's how we did:...")
-    print("When we always switch doors:", correct, "guesses correct out of", NUMATTEMPTS, "\nThat's", correct/NUMATTEMPTS*100, "%.")
-    print("When we never switch doors:", correctNoSwitch, "guesses correct out of", NUMATTEMPTS, "\nThat's", correctNoSwitch/NUMATTEMPTS*100, "%.")
+    if not demo_mode:
+        for i in range(0, NUMATTEMPTS):
+                if roundWithSwitch():
+                    correct = correct+1
+                if roundNoSwitch():
+                    correctNoSwitch = correctNoSwitch+1
+        print("Here's how we did:...")
+        print("When we always switch doors:", correct, "guesses correct out of", NUMATTEMPTS, "\nThat's", correct/NUMATTEMPTS*100, "%.")
+        print("When we never switch doors:", correctNoSwitch, "guesses correct out of", NUMATTEMPTS, "\nThat's", correctNoSwitch/NUMATTEMPTS*100, "%.")
