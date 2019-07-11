@@ -41,6 +41,9 @@ def doorSwitch(doors, guess, montysDoor):
             return door
     
 
+#shows off the whole process of a round
+#from start to finish (where contestant always switches doors)
+#with print statements to justify the logic
 def demo():
     doors = generateDoors(SIZE)
     print(doors)
@@ -55,6 +58,9 @@ def demo():
     else:
         return False
 
+#shows off the whole process of a round
+#from start to finish (where contestant never switches doors)
+#with print statements to justify the logic
 def demoNoSwitch():
     doors = generateDoors(SIZE)
     print(doors)
@@ -69,6 +75,10 @@ def demoNoSwitch():
     else:
         return False
 
+#just goes through a round
+#from start to finish (where contestant always switches doors)
+#returns True if the contestant was correct
+#and returns False if the contestant was not correct
 def roundWithSwitch():
     doors = generateDoors(SIZE)
     guess = contestantGuess(doors, SIZE)
@@ -79,6 +89,10 @@ def roundWithSwitch():
     else:
         return False
 
+#just goes through a round
+#from start to finish (where contestant never switches doors)
+#returns True if the contestant was correct
+#and returns False if the contestant was not correct
 def roundNoSwitch():
     doors = generateDoors(SIZE)
     guess = contestantGuess(doors, SIZE)
@@ -95,21 +109,21 @@ def roundNoSwitch():
 
 correct = 0
 correctNoSwitch = 0
-show_work = False
+demo_mode = False
 
-if show_work:
+if demo_mode:
     for i in range(0, 3):
         demo()
         demoNoSwitch()
         print("\n")
 
 
-if not show_work:
+if not demo_mode:
     for i in range(0, NUMATTEMPTS):
             if roundWithSwitch():
                 correct = correct+1
             if roundNoSwitch():
                 correctNoSwitch = correctNoSwitch+1
     print("Here's how we did:...")
-    print("With switch: ", correct, "that's ", correct/NUMATTEMPTS, "%")
-    print("Without switch: ", correctNoSwitch, "that's ", correctNoSwitch/NUMATTEMPTS, "%")
+    print("When we always switch doors:", correct, "guesses correct out of", NUMATTEMPTS, "\nThat's", correct/NUMATTEMPTS*100, "%.")
+    print("When we never switch doors:", correctNoSwitch, "guesses correct out of", NUMATTEMPTS, "\nThat's", correctNoSwitch/NUMATTEMPTS*100, "%.")
